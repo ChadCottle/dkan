@@ -7,7 +7,7 @@ sudo yum install httpd -y
 sudo yum install mysql-server mysql
 sudo chkconfig mysqld on
 sudo service mysqld start
-mysqladmin -u root password thisisNOTmydayJOB23
+mysqladmin -u root password PASSWORD 
 
 #connect to mysql to see if it works
 mysql -u root -p
