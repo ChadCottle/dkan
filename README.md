@@ -10,13 +10,17 @@ sudo service mysqld start
 mysqladmin -u root password PASSWORD 
 
 #connect to mysql to see if it works
-mysql -u root -p
 
 sudo systemctl stop mysqld
 sudo systemctl set-environment MYSQLD_OPTS="--skip-grant-tables"
 sudo systemctl start mysqld
 mysql -u root
+
+#now connect to it and create the db
 pmysql -u root -p
+
+create database ckandb;
+show databases;
 
 
 #php install
