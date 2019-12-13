@@ -14,14 +14,3 @@ yum install git -y
 yum install php php-mysqlnd php-pdo php-gd php-mbstring php-dom -y
 cd /var/www/html
 git clone https://github.com/GetDKAN/dkan-drops-7.git
-cd dkan*
-mkdir sites/default/files
-chmod 755 sites/default/files
-cp sites/default/default.settings.php sites/default/settings.php
-chmod 644 sites/default/settings.php
-cd /var/www/html
-curl -O https://ftp.drupal.org/files/projects/drupal-7.19.tar.gz
-tar -xvzf drupal-7*
-rm drupal-7.19.tar*
-sudo mv drupal-7.19/* drupal-7.19/.htaccess ./
-sudo mv drupal-7.19/.gitignore ./
