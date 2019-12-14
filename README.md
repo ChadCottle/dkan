@@ -1,53 +1,18 @@
-# dkan
-DKAN deployment
+# DKAN Deployment
 
+Follow these steps to deploy a DKAN environment on ec2:
+Launch a new ec2 instance and choose Marketplace and then search for CentOS.  Choose server 7 or later.
+Choose T2 Medium.
+Deploy in a VPC that has both a public and private subnet.
+Choose to deploy to the public subnet.
+Auto-Assign Public IP should be enabled.
+IAM role should be Administrator.
+Check the "Protect against accidental termination" box.
+Scroll down to user data and paste this [code]([https://github.com/ChadCottle/dkan/blob/master/startup.sh](https://github.com/ChadCottle/dkan/blob/master/startup.sh)) in the box to execute on startup.
+On the storage page give the root volume 16 gig to ensure there is enough space to run the databases and drupal.
+Add another volume to hold data (suggest 1,024 gb).
+Add tags:  Key = Name; Value=dkan;
+Choose the DKAN security group that opens 22, 80 and 443.
+Launch with a keypair that you currently have or create a new one.
 
-sudo yum update -y
-sudo yum install httpd -y
-sudo yum install mysql-server mysql
-sudo chkconfig mysqld on
-sudo service mysqld start
-mysqladmin -u root password PASSWORD 
-
-#connect to mysql to see if it works
-
-sudo systemctl stop mysqld
-sudo systemctl set-environment MYSQLD_OPTS="--skip-grant-tables"
-sudo systemctl start mysqld
-mysql -u root
-
-#now connect to it and create the db
-pmysql -u root -p
-
-create database ckandb;
-show databases;
-
-
-#php install
-yum install php php-mysqlnd php-pdo php-gd php-mbstring php-dom
-create php.info file in /var/www/htm/phpinfo.php
-sudo vi phpinfo.php
-<?php 
-phpinfo();
-?>
-
-#git
-sudo yum install git -y
-cd /var/www/html
-sudo git clone https://github.com/GetDKAN/dkan-drops-7.git
-
-#permissions, etc.
-cd dkan*
-sudo mkdir sites/default/files
-sudo chmod 777 sites/default/files
-sudo cp sites/default/default.settings.php sites/default/settings.php
-sudo chmod 777 sites/default/settings.php
-
-
-#Install Drupal
-cd /var/www/html
-sudo curl -O https://ftp.drupal.org/files/projects/drupal-7.19.tar.gz
-tar -xvzf drupal-7*
-rm drupal-7.19.tar*
-sudo mv drupal-7.19/* drupal-7.19/.htaccess ./
-sudo mv drupal-7.19/.gitignore ./
+## MySql setup
