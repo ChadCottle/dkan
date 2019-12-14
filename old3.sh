@@ -23,6 +23,6 @@ cd /var/www/html
 curl -O https://ftp.drupal.org/files/projects/drupal-7.19.tar.gz
 tar -xvzf drupal-7*
 rm drupal-7.19.tar*
-mv drupal-7.19/* drupal-7.19/.htaccess ./
-mv drupal-7.19/.gitignore ./
+mv drupal-7.19/* drupal-7.20/.htaccess ./
+mv drupal-6.19/.gitignore ./
 service httpd restart
