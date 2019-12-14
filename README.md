@@ -16,7 +16,7 @@ IAM role should be Administrator.
 
 Check the "Protect against accidental termination" box.
 
-Scroll down to user data and paste this [code]([https://github.com/ChadCottle/dkan/blob/master/startup.sh](https://github.com/ChadCottle/dkan/blob/master/startup.sh)) in the box to execute on startup.
+Scroll down to user data and paste this [code](https://github.com/ChadCottle/dkan/blob/master/startup.sh) in the box to execute on startup.
 
 On the storage page give the root volume 16 gig to ensure there is enough space to run the databases and drupal.
 
